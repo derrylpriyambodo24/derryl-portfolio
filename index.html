@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Derryl Priyambodo — Personal Portfolio</title>
+  <meta name="description" content="Portfolio of Derryl Priyambodo, Informatics Engineering Graduate specializing in AI, Machine Learning, Computer Vision, and Software Development.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            warmCream: '#FAF7F2',
+            softBeige: '#F1EDE5',
+            softCoral: '#E98973',
+            softCoralHover: '#D87760',
+            sageGreen: '#A8B5A2',
+            mutedPlum: '#6B5B73',
+            charcoal: '#292725',
+            warmGray: '#77716B',
+            warmDark: '#1E1C1A',
+            warmDarkCard: '#282522',
+            warmDarkBorder: '#36322D',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          borderRadius: {
+            '2xl': '20px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-[#FAF7F2] dark:bg-[#1E1C1A] text-[#292725] dark:text-[#F5F0E8] antialiased selection:bg-[#E98973] selection:text-white transition-colors duration-300">
+
+  <!-- ==========================================
+       1. FLOATING NAV BAR
+       ========================================== -->
+  <header class="fixed top-5 inset-x-0 z-50 px-4 max-w-5xl mx-auto">
+    <nav class="floating-nav px-6 py-3.5 flex items-center justify-between">
+      <!-- Monogram / Logo -->
+      <a href="#hero" class="text-xl font-extrabold tracking-tight text-[#292725] dark:text-[#F5F0E8] hover:opacity-80 transition-opacity">
+        DERRYL <span class="text-[#E98973]">PRIYAMBODO</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-8 text-sm">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
+      <!-- Theme Toggle & Mobile Trigger -->
+      <div class="flex items-center gap-3">
+        <button type="button" class="theme-toggle-btn p-2 rounded-full text-[#77716B] dark:text-[#B0A89F] hover:text-[#E98973] dark:hover:text-[#E98973] transition-colors focus:outline-none" aria-label="Toggle Theme">
+          <!-- Sun Icon (Light mode) -->
+          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Moon Icon (Dark mode) -->
+          <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Hamburger -->
+        <button type="button" id="mobile-menu-btn" class="md:hidden p-2 text-[#292725] dark:text-[#F5F0E8] hover:text-[#E98973] focus:outline-none" aria-label="Open Navigation Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu-drawer" class="fixed inset-0 z-50 bg-[#FAF7F2] dark:bg-[#1E1C1A] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-between p-8">
+    <div class="flex items-center justify-between">
+      <span class="text-xl font-bold tracking-tight text-[#292725] dark:text-[#F5F0E8]">DERRYL<span class="text-[#E98973]">.</span></span>
+      <button type="button" id="mobile-menu-close" class="p-2 text-[#77716B] dark:text-[#B0A89F] hover:text-[#E98973]">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-6 text-2xl font-bold">
+      <a href="#about" class="mobile-nav-link text-[#292725] dark:text-[#F5F0E8] hover:text-[#E98973]">About</a>
+      <a href="#projects" class="mobile-nav-link text-[#292725] dark:text-[#F5F0E8] hover:text-[#E98973]">Projects</a>
+      <a href="#skills" class="mobile-nav-link text-[#292725] dark:text-[#F5F0E8] hover:text-[#E98973]">Skills</a>
+      <a href="#experience" class="mobile-nav-link text-[#292725] dark:text-[#F5F0E8] hover:text-[#E98973]">Experience</a>
+      <a href="#contact" class="mobile-nav-link text-[#292725] dark:text-[#F5F0E8] hover:text-[#E98973]">Contact</a>
+    </div>
+
+    <div class="text-sm text-[#77716B] dark:text-[#B0A89F]">
+      <p>© 2026 Derryl Priyambodo</p>
+    </div>
+  </div>
+
+  <main class="pt-28 pb-20">
+
+    <!-- ==========================================
+         2. HERO SECTION
+         ========================================== -->
+    <section id="hero" class="max-w-5xl mx-auto px-6 pt-8 pb-20 min-h-[80vh] flex flex-col justify-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Text Column -->
+        <div class="lg:col-span-7 space-y-6 hero-fade-in">
+          <!-- Availability Pill -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#F1EDE5] dark:bg-[#282522] border border-[rgba(41,39,37,0.08)] dark:border-[rgba(245,240,232,0.08)] text-xs font-semibold uppercase tracking-wider text-[#77716B] dark:text-[#B0A89F]">
+            <span class="pulse-indicator"></span>
+            Available for Opportunities
+          </div>
+
+          <!-- Main Typographic Headline -->
+          <div class="space-y-1">
+            <h2 class="text-2xl md:text-3xl font-semibold text-[#77716B] dark:text-[#B0A89F]">Hi, I'm</h2>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-[#292725] dark:text-[#F5F0E8]">
+              <span class="text-[#E98973]">Derryl.</span>
+            </h1>
+          </div>
+
+          <!-- Subtitle -->
+          <p class="text-xl md:text-2xl font-semibold text-[#292725] dark:text-[#F5F0E8] leading-snug">
+            Informatics Student & Aspiring Software Developer.
+          </p>
+
+          <!-- Bio Summary -->
+          <p class="text-base md:text-lg text-[#77716B] dark:text-[#B0A89F] leading-relaxed max-w-xl">
+            Fresh graduate in Informatics Engineering from Gunadarma University (GPA 3.56/4.00) focusing on Artificial Intelligence, Computer Vision, and full-stack software development. I build practical digital experiences through code, design, and technology.
+          </p>
+
+          <!-- CTAs -->
+          <div class="pt-4 flex flex-wrap items-center gap-4">
+            <a href="#projects" class="btn-primary inline-flex items-center gap-2 text-base">
+              <span>View My Work</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+            <a href="mailto:derrylpriyambodo24@gmail.com" class="btn-secondary inline-flex items-center gap-2 text-base">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span>Download CV</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Profile Visual Column -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end hero-fade-in" style="animation-delay: 0.2s;">
+          <div class="portfolio-card p-4 relative max-w-sm w-full">
+            <div class="card-image-wrapper aspect-square w-full mb-4">
+              <img src="assets/images/foto_saya.jpg" alt="Derryl Priyambodo Headshot" class="w-full h-full object-cover rounded-xl" />
+            </div>
+            
+            <div class="space-y-2 text-center pb-2">
+              <h3 class="text-xl font-bold text-[#292725] dark:text-[#F5F0E8]">Derryl Priyambodo</h3>
+              <p class="text-xs font-medium text-[#77716B] dark:text-[#B0A89F] flex items-center justify-center gap-1">
+                <svg class="w-3.5 h-3.5 text-[#E98973]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                Depok, Jawa Barat, Indonesia
+              </p>
+              
+              <!-- Quick Badges -->
+              <div class="pt-2 flex flex-wrap justify-center gap-1.5">
+                <span class="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-[#A8B5A2]/20 text-[#292725] dark:text-[#F5F0E8]">AI & ML</span>
+                <span class="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-[#E98973]/20 text-[#E98973]">Computer Vision</span>
+                <span class="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-[#6B5B73]/20 text-[#6B5B73] dark:text-[#9A879F]">Software Dev</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. ABOUT SECTION & JOURNEY TIMELINE
+         ========================================== -->
+    <section id="about" class="py-20 bg-[#F1EDE5] dark:bg-[#25221F] transition-colors duration-300">
+      <div class="max-w-5xl mx-auto px-6 reveal">
+        <div class="mb-12">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-[#E98973]">ABOUT ME</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-[#292725] dark:text-[#F5F0E8] mt-1">
+            Who I am, what I build, and where I'm headed.
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <!-- Text Bio -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="portfolio-card p-8 space-y-4">
+              <p class="text-base text-[#292725] dark:text-[#F5F0E8] leading-relaxed">
+                I enjoy turning ideas into functional, practical digital products. As an Informatics Engineering graduate from Gunadarma University, my core passion lies in software development, machine learning, and artificial intelligence.
+              </p>
+              <p class="text-base text-[#77716B] dark:text-[#B0A89F] leading-relaxed">
+                During my thesis, I specialized in Computer Vision—evaluating transfer learning CNN architectures for automated medical image diagnostics. Beyond research, I have hands-on experience in building AI chatbots, managing database schemas, and delivering visual assets for academic laboratories.
+              </p>
+            </div>
+
+            <!-- Education Card -->
+            <div class="portfolio-card p-6 border-l-4 border-l-[#E98973]">
+              <div class="flex items-start justify-between flex-wrap gap-2 mb-2">
+                <div>
+                  <h3 class="text-lg font-bold text-[#292725] dark:text-[#F5F0E8]">Gunadarma University</h3>
+                  <p class="text-sm font-medium text-[#77716B] dark:text-[#B0A89F]">Bachelor of Informatics • Depok, West Java</p>
+                </div>
+                <span class="px-3 py-1 text-xs font-bold rounded-full bg-[#E98973]/15 text-[#E98973]">2022 – 2026</span>
+              </div>
+              <p class="text-sm font-semibold text-[#292725] dark:text-[#F5F0E8] mt-2">
+                4th Semester GPA: <span class="text-[#E98973]">3.56 / 4.00</span> (Fresh Graduate)
+              </p>
+            </div>
+          </div>
+
+          <!-- Interactive Journey / Timeline -->
+          <div class="lg:col-span-5">
+            <div class="portfolio-card p-8">
+              <h3 class="text-lg font-bold text-[#292725] dark:text-[#F5F0E8] mb-6 flex items-center gap-2">
+                <svg class="w-5 h-5 text-[#E98973]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                My Journey
+              </h3>
+
+              <div class="space-y-6">
+                <!-- Timeline Item 2023 -->
+                <div class="timeline-item">
+                  <span class="text-xs font-bold text-[#E98973]">2023</span>
+                  <h4 class="text-sm font-bold text-[#292725] dark:text-[#F5F0E8]">Programming Fundamentals</h4>
+                  <p class="text-xs text-[#77716B] dark:text-[#B0A89F] mt-0.5">Started exploring Python, C/C++, and computer science core logic.</p>
+                </div>
+
+                <!-- Timeline Item 2024 -->
+                <div class="timeline-item">
+                  <span class="text-xs font-bold text-[#E98973]">2024</span>
+                  <h4 class="text-sm font-bold text-[#292725] dark:text-[#F5F0E8]">Web & Databases</h4>
+                  <p class="text-xs text-[#77716B] dark:text-[#B0A89F] mt-0.5">Web development, SQL database design (MySQL, PostgreSQL, Oracle).</p>
+                </div>
+
+                <!-- Timeline Item 2025 -->
+                <div class="timeline-item">
+                  <span class="text-xs font-bold text-[#E98973]">2025</span>
+                  <h4 class="text-sm font-bold text-[#292725] dark:text-[#F5F0E8]">Machine Learning & Lab Assistant</h4>
+                  <p class="text-xs text-[#77716B] dark:text-[#B0A89F] mt-0.5">CNN research, capstone AI chatbot team member, Intermediate Accounting Lab IT support.</p>
+                </div>
+
+                <!-- Timeline Item 2026 -->
+                <div class="timeline-item">
+                  <span class="text-xs font-bold text-[#E98973]">2026</span>
+                  <h4 class="text-sm font-bold text-[#292725] dark:text-[#F5F0E8]">Graduate & Industry Ready</h4>
+                  <p class="text-xs text-[#77716B] dark:text-[#B0A89F] mt-0.5">Building real-world projects & ready as ML/AI or Software Engineer.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. PROJECTS SECTION
+         ========================================== -->
+    <section id="projects" class="py-20 max-w-5xl mx-auto px-6">
+      <div class="mb-12 reveal">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#E98973]">SELECTED WORK</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-[#292725] dark:text-[#F5F0E8] mt-1">
+          Featured research & practical applications.
+        </h2>
+      </div>
+
+      <!-- 1 FEATURED PROJECT (Hero Card Format per PDF guideline) -->
+      <div class="portfolio-card p-8 mb-12 border-2 border-[#E98973]/30 reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6 space-y-4">
+            <span class="px-3 py-1 text-xs font-bold rounded-full bg-[#E98973]/15 text-[#E98973] inline-block">
+              01 — FEATURED RESEARCH
+            </span>
+
+            <h3 class="text-2xl md:text-3xl font-extrabold text-[#292725] dark:text-[#F5F0E8] leading-snug">
+              Comparative Analysis of CNN Architectures for Lung Cancer Classification
+            </h3>
+
+            <p class="text-sm md:text-base text-[#77716B] dark:text-[#B0A89F] leading-relaxed">
+              Academic thesis research comparing transfer-learning Convolutional Neural Networks (VGG16, ResNet50, DenseNet121) for 3-class histopathology image diagnosis (adenocarcinoma, benign, squamous cell carcinoma).
+            </p>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-3 py-1 text-xs font-medium rounded-full bg-[#FAF7F2] dark:bg-[#1E1C1A] text-[#292725] dark:text-[#F5F0E8] border border-[rgba(41,39,37,0.08)]">Python</span>
+              <span class="px-3 py-1 text-xs font-medium rounded-full bg-[#FAF7F2] dark:bg-[#1E1C1A] text-[#292725] dark:text-[#F5F0E8] border border-[rgba(41,39,37,0.08)]">TensorFlow</span>
+              <span class="px-3 py-1 text-xs font-medium rounded-full bg-[#FAF7F2] dark:bg-[#1E1C1A] text-[#292725] dark:text-[#F5F0E8] border border-[rgba(41,39,37,0.08)]">ResNet50</span>
+              <span class="px-3 py-1 text-xs font-medium rounded-full bg-[#FAF7F2] dark:bg-[#1E1C1A] text-[#292725] dark:text-[#F5F0E8] border border-[rgba(41,39,37,0.08)]">DenseNet121</span>
+            </div>
+
+            <div class="pt-4">
+              <button type="button" onclick="openProjectModal('thesis')" class="btn-primary inline-flex items-center gap-2 text-sm">
+                <span>View Research Details</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6">
+            <div class="card-image-wrapper aspect-video w-full cursor-pointer" onclick="openProjectModal('thesis')">
+              <img src="assets/images/thesis-preview.jpg" alt="CNN Research Architecture Dashboard" class="w-full h-full object-cover rounded-xl" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUPPORTING PROJECTS (2-Column Grid per PDF guideline) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+        <!-- Project 02: Learning Buddy -->
+        <div class="portfolio-card p-6 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="card-image-wrapper aspect-video w-full mb-4 cursor-pointer" onclick="openProjectModal('learningBuddy')">
+              <img src="assets/images/learning-buddy.jpg" alt="Learning Buddy Capstone Project" class="w-full h-full object-cover rounded-xl" />
+            </div>
+
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-[#E98973]">02 — CAPSTONE PROJECT</span>
+              <span class="text-xs font-medium text-[#77716B] dark:text-[#B0A89F]">Oct – Dec 2025</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-[#292725] dark:text-[#F5F0E8]">
+              Learning Buddy — AI Chatbot & Assessment Platform
+            </h3>
+
+            <p class="text-sm text-[#77716B] dark:text-[#B0A89F] leading-relaxed">
+              Contributed to a 5-member team building an AI chatbot embedded into a website to recommend custom learning paths and evaluate user levels via adaptive quiz questions.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-[#F1EDE5] dark:bg-[#25221F] text-[#292725] dark:text-[#F5F0E8]">Python</span>
+              <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-[#F1EDE5] dark:bg-[#25221F] text-[#292725] dark:text-[#F5F0E8]">NLP</span>
+              <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-[#F1EDE5] dark:bg-[#25221F] text-[#292725] dark:text-[#F5F0E8]">Word2Vec</span>
+              <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-[#F1EDE5] dark:bg-[#25221F] text-[#292725] dark:text-[#F5F0E8]">LLM Fine-tuning</span>
+            </div>
+          </div>
+
+          <div class="pt-6">
+            <button type="button" onclick="openProjectModal('learningBuddy')" class="text-sm font-semibold text-[#E98973] hover:underline inline-flex items-center gap-1">
+              <span>View Details</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 03: Accounting Lab System -->
+        <div class="portfolio-card p-6 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="card-image-wrapper aspect-video w-full mb-4 cursor-pointer" onclick="openProjectModal('labAssistant')">
+              <img src="assets/images/lab-project.jpg" alt="Intermediate Accounting Lab Portal" class="w-full h-full object-cover rounded-xl" />
+            </div>
+
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-[#E98973]">03 — LABORATORY SYSTEM</span>
+              <span class="text-xs font-medium text-[#77716B] dark:text-[#B0A89F]">Jul 2025</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-[#292725] dark:text-[#F5F0E8]">
+              Intermediate Accounting Lab Infrastructure & Assets
+            </h3>
+
+            <p class="text-sm text-[#77716B] dark:text-[#B0A89F] leading-relaxed">
+              Managed IT hardware & Zahir accounting software, while designing administrative visual materials, official assistant ID cards, posters, and portal graphics.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-[#F1EDE5] dark:bg-[#25221F] text-[#292725] dark:text-[#F5F0E8]">IT Support</span>
+              <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-[#F1EDE5] dark:bg-[#25221F] text-[#292725] dark:text-[#F5F0E8]">Zahir ERP</span>
+              <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-[#F1EDE5] dark:bg-[#25221F] text-[#292725] dark:text-[#F5F0E8]">Figma</span>
+              <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-[#F1EDE5] dark:bg-[#25221F] text-[#292725] dark:text-[#F5F0E8]">UI Design</span>
+            </div>
+          </div>
+
+          <div class="pt-6">
+            <button type="button" onclick="openProjectModal('labAssistant')" class="text-sm font-semibold text-[#E98973] hover:underline inline-flex items-center gap-1">
+              <span>View Details</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. SKILLS SECTION
+         ========================================== -->
+    <section id="skills" class="py-20 bg-[#F1EDE5] dark:bg-[#25221F] transition-colors duration-300">
+      <div class="max-w-5xl mx-auto px-6 reveal">
+        <div class="mb-12">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-[#E98973]">TECHNICAL EXPERTISE</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-[#292725] dark:text-[#F5F0E8] mt-1">
+            Skills & Core Competencies.
+          </h2>
+          <p class="text-sm text-[#77716B] dark:text-[#B0A89F] mt-2">
+            Categorized technical capabilities, developer tools, and domain knowledge.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Programming Languages -->
+          <div class="portfolio-card p-6 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-[#E98973]/15 text-[#E98973] flex items-center justify-center font-bold">
+                &lt;/&gt;
+              </div>
+              <h3 class="text-lg font-bold text-[#292725] dark:text-[#F5F0E8]">Languages</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">JavaScript</span>
+              <span class="skill-pill">SQL</span>
+              <span class="skill-pill">HTML5</span>
+              <span class="skill-pill">CSS3</span>
+            </div>
+          </div>
+
+          <!-- Machine Learning & AI -->
+          <div class="portfolio-card p-6 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-[#6B5B73]/15 text-[#6B5B73] dark:text-[#9A879F] flex items-center justify-center font-bold">
+                🤖
+              </div>
+              <h3 class="text-lg font-bold text-[#292725] dark:text-[#F5F0E8]">ML & AI</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="skill-pill">Computer Vision (CNN)</span>
+              <span class="skill-pill">Transfer Learning</span>
+              <span class="skill-pill">NLP</span>
+              <span class="skill-pill">Word2Vec</span>
+              <span class="skill-pill">LLM Fine-tuning</span>
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div class="portfolio-card p-6 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-[#A8B5A2]/25 text-[#292725] dark:text-[#F5F0E8] flex items-center justify-center font-bold">
+                🛢️
+              </div>
+              <h3 class="text-lg font-bold text-[#292725] dark:text-[#F5F0E8]">Databases</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="skill-pill">PostgreSQL</span>
+              <span class="skill-pill">MySQL</span>
+              <span class="skill-pill">Oracle</span>
+            </div>
+          </div>
+
+          <!-- Tools & Platforms -->
+          <div class="portfolio-card p-6 space-y-4 md:col-span-2 lg:col-span-2">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-[#E98973]/15 text-[#E98973] flex items-center justify-center font-bold">
+                🛠️
+              </div>
+              <h3 class="text-lg font-bold text-[#292725] dark:text-[#F5F0E8]">Developer Tools & Software</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="skill-pill">VS Code</span>
+              <span class="skill-pill">Google Colab</span>
+              <span class="skill-pill">Jupyter Notebook</span>
+              <span class="skill-pill">Figma</span>
+              <span class="skill-pill">Git / GitHub</span>
+              <span class="skill-pill">Zahir Accounting</span>
+              <span class="skill-pill">Zahir ERP</span>
+              <span class="skill-pill">Microsoft Office</span>
+            </div>
+          </div>
+
+          <!-- Soft Skills & Languages -->
+          <div class="portfolio-card p-6 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-[#6B5B73]/15 text-[#6B5B73] dark:text-[#9A879F] flex items-center justify-center font-bold">
+                🌐
+              </div>
+              <h3 class="text-lg font-bold text-[#292725] dark:text-[#F5F0E8]">Languages & Soft Skills</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="skill-pill">Indonesian (Native)</span>
+              <span class="skill-pill">English (Intermediate)</span>
+              <span class="skill-pill">Systematic Problem Solving</span>
+              <span class="skill-pill">Team Collaboration</span>
+              <span class="skill-pill">Technical Communication</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         6. EXPERIENCE SECTION
+         ========================================== -->
+    <section id="experience" class="py-20 max-w-5xl mx-auto px-6">
+      <div class="mb-12 reveal">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#E98973]">WORK EXPERIENCE</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-[#292725] dark:text-[#F5F0E8] mt-1">
+          Professional experience & roles.
+        </h2>
+      </div>
+
+      <div class="portfolio-card p-8 reveal">
+        <div class="flex flex-wrap items-start justify-between gap-4 pb-6 border-b border-[rgba(41,39,37,0.08)] dark:border-[rgba(245,240,232,0.08)]">
+          <div>
+            <h3 class="text-2xl font-bold text-[#292725] dark:text-[#F5F0E8]">
+              Intermediate Accounting Laboratory Assistant
+            </h3>
+            <p class="text-base font-semibold text-[#E98973] mt-1">
+              Gunadarma University
+            </p>
+          </div>
+
+          <span class="px-4 py-1.5 text-xs font-bold rounded-full bg-[#E98973]/15 text-[#E98973]">
+            Jul 2025
+          </span>
+        </div>
+
+        <ul class="pt-6 space-y-4 text-base text-[#77716B] dark:text-[#B0A89F]">
+          <li class="flex items-start gap-3">
+            <span class="text-[#E98973] font-bold text-lg leading-none">•</span>
+            <span>Served as IT Support for the Intermediate Accounting Laboratory at Gunadarma University.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-[#E98973] font-bold text-lg leading-none">•</span>
+            <span>Managed and maintained all laboratory hardware infrastructure and specialized accounting suites (Zahir Accounting & Zahir ERP).</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-[#E98973] font-bold text-lg leading-none">•</span>
+            <span>Designed visual and administrative materials for the lab, including official assistant ID cards, website portal assets, and event promotional posters.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         7. CONTACT SECTION
+         ========================================== -->
+    <section id="contact" class="py-20 bg-[#F1EDE5] dark:bg-[#25221F] transition-colors duration-300">
+      <div class="max-w-5xl mx-auto px-6 reveal">
+        <div class="mb-12 text-center max-w-2xl mx-auto">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-[#E98973]">GET IN TOUCH</span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-[#292725] dark:text-[#F5F0E8] mt-2">
+            Let's build something great together.
+          </h2>
+          <p class="text-base text-[#77716B] dark:text-[#B0A89F] mt-3">
+            Ready to contribute as a Machine Learning Engineer, AI Engineer, or Software Engineer. Feel free to reach out directly.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Recruiter Contact Info Cards -->
+          <div class="lg:col-span-5 space-y-4">
+            <!-- Email -->
+            <a href="mailto:derrylpriyambodo24@gmail.com" class="portfolio-card p-6 flex items-center gap-4 block hover:border-[#E98973]">
+              <div class="w-12 h-12 rounded-full bg-[#E98973]/15 text-[#E98973] flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-[#77716B] dark:text-[#B0A89F]">Email</p>
+                <p class="text-sm md:text-base font-bold text-[#292725] dark:text-[#F5F0E8]">derrylpriyambodo24@gmail.com</p>
+              </div>
+            </a>
+
+            <!-- Phone / WhatsApp -->
+            <a href="https://wa.me/6281323970852" target="_blank" rel="noopener noreferrer" class="portfolio-card p-6 flex items-center gap-4 block hover:border-[#E98973]">
+              <div class="w-12 h-12 rounded-full bg-[#A8B5A2]/25 text-[#292725] dark:text-[#F5F0E8] flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-[#77716B] dark:text-[#B0A89F]">Phone / WhatsApp</p>
+                <p class="text-sm md:text-base font-bold text-[#292725] dark:text-[#F5F0E8]">+62 813 2397 0852</p>
+              </div>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/derryl-priyambodo-b3135a314" target="_blank" rel="noopener noreferrer" class="portfolio-card p-6 flex items-center gap-4 block hover:border-[#E98973]">
+              <div class="w-12 h-12 rounded-full bg-[#6B5B73]/15 text-[#6B5B73] dark:text-[#9A879F] flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-[#77716B] dark:text-[#B0A89F]">LinkedIn Profile</p>
+                <p class="text-sm md:text-base font-bold text-[#292725] dark:text-[#F5F0E8]">derryl-priyambodo</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Interactive Contact Form -->
+          <div class="lg:col-span-7">
+            <form id="contact-form" class="portfolio-card p-8 space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-bold text-[#292725] dark:text-[#F5F0E8] uppercase tracking-wider mb-2">Your Name</label>
+                  <input type="text" required placeholder="Recruiter / Hiring Manager" class="w-full px-4 py-3 rounded-xl bg-[#FAF7F2] dark:bg-[#1E1C1A] border border-[rgba(41,39,37,0.1)] dark:border-[rgba(245,240,232,0.1)] text-[#292725] dark:text-[#F5F0E8] focus:outline-none focus:border-[#E98973] transition-colors" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-[#292725] dark:text-[#F5F0E8] uppercase tracking-wider mb-2">Your Email</label>
+                  <input type="email" required placeholder="name@company.com" class="w-full px-4 py-3 rounded-xl bg-[#FAF7F2] dark:bg-[#1E1C1A] border border-[rgba(41,39,37,0.1)] dark:border-[rgba(245,240,232,0.1)] text-[#292725] dark:text-[#F5F0E8] focus:outline-none focus:border-[#E98973] transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-[#292725] dark:text-[#F5F0E8] uppercase tracking-wider mb-2">Subject</label>
+                <input type="text" required placeholder="Job Opportunity / Collaboration" class="w-full px-4 py-3 rounded-xl bg-[#FAF7F2] dark:bg-[#1E1C1A] border border-[rgba(41,39,37,0.1)] dark:border-[rgba(245,240,232,0.1)] text-[#292725] dark:text-[#F5F0E8] focus:outline-none focus:border-[#E98973] transition-colors" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-[#292725] dark:text-[#F5F0E8] uppercase tracking-wider mb-2">Message</label>
+                <textarea rows="4" required placeholder="Hi Derryl, we'd love to invite you for an interview..." class="w-full px-4 py-3 rounded-xl bg-[#FAF7F2] dark:bg-[#1E1C1A] border border-[rgba(41,39,37,0.1)] dark:border-[rgba(245,240,232,0.1)] text-[#292725] dark:text-[#F5F0E8] focus:outline-none focus:border-[#E98973] transition-colors"></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary w-full py-3.5 text-base flex items-center justify-center gap-2">
+                <span>Send Message</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       8. FOOTER
+       ========================================== -->
+  <footer class="py-10 border-t border-[rgba(41,39,37,0.08)] dark:border-[rgba(245,240,232,0.08)]">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[#77716B] dark:text-[#B0A89F]">
+      <div>
+        <p>© 2026 Derryl Priyambodo. Designed with Warm Creative Developer Guidelines.</p>
+      </div>
+      <div>
+        <a href="#hero" class="hover:text-[#E98973] transition-colors flex items-center gap-1 font-semibold">
+          <span>Back to Top</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       9. PROJECT DETAIL MODAL
+       ========================================== -->
+  <div id="project-modal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-[#FAF7F2] dark:bg-[#282522] border border-[#E6E0D5] dark:border-[#36322D] rounded-2xl max-w-2xl w-full p-6 md:p-8 space-y-6 relative shadow-2xl my-8">
+      <!-- Modal Close Button -->
+      <button type="button" id="modal-close-btn" class="absolute top-6 right-6 text-[#77716B] hover:text-[#E98973] p-1">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <!-- Badge & Title -->
+      <div class="space-y-1 pr-8">
+        <span id="modal-badge" class="px-3 py-1 text-xs font-bold rounded-full bg-[#E98973]/15 text-[#E98973] inline-block"></span>
+        <h3 id="modal-title" class="text-2xl font-extrabold text-[#292725] dark:text-[#F5F0E8]"></h3>
+      </div>
+
+      <!-- Preview Image -->
+      <div class="card-image-wrapper aspect-video w-full">
+        <img id="modal-image" src="" alt="Project Detail Preview" class="w-full h-full object-cover rounded-xl" />
+      </div>
+
+      <!-- Summary -->
+      <p id="modal-summary" class="text-sm md:text-base text-[#77716B] dark:text-[#B0A89F] leading-relaxed"></p>
+
+      <!-- Key Details Bullet List -->
+      <div class="space-y-2">
+        <h4 class="text-xs font-bold text-[#292725] dark:text-[#F5F0E8] uppercase tracking-wider">Key Details & Impact</h4>
+        <ul id="modal-details-list" class="space-y-2 text-sm text-[#77716B] dark:text-[#B0A89F]"></ul>
+      </div>
+
+      <!-- Tech Stack Pills -->
+      <div class="space-y-2">
+        <h4 class="text-xs font-bold text-[#292725] dark:text-[#F5F0E8] uppercase tracking-wider">Technologies Used</h4>
+        <div id="modal-tech-pills" class="flex flex-wrap gap-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-[#292725] text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+    <div class="w-8 h-8 rounded-full bg-[#22C55E]/20 text-[#22C55E] flex items-center justify-center font-bold">
+      ✓
+    </div>
+    <div>
+      <p class="text-sm font-bold">Message Sent Successfully!</p>
+      <p class="text-xs text-gray-300">Thank you for reaching out, Derryl will respond shortly.</p>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
