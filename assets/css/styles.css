@@ -70,6 +70,14 @@ body {
   transition: transform 0.3s ease;
 }
 
+.learning-buddy-modal-image {
+  aspect-ratio: 16 / 9;
+}
+
+.lab-assistant-modal-image {
+  aspect-ratio: 16 / 9;
+}
+
 .portfolio-card:hover .card-image-wrapper img {
   transform: scale(1.02);
 }
@@ -262,4 +270,3 @@ body {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
-

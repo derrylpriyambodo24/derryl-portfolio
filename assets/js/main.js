@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNavHighlight();
   initMobileMenu();
   initProjectModals();
-  initContactForm();
 });
 
 /* ==========================================================================
@@ -130,7 +129,7 @@ const projectData = {
     title: "Comparative Analysis of CNN Architectures for Lung Cancer Classification",
     badge: "Thesis Research • 2025–2026",
     summary: "Comprehensive comparative evaluation of 3 transfer-learning-based Convolutional Neural Network architectures (VGG16, ResNet50, DenseNet121) for histopathology lung cancer classification.",
-    image: "assets/images/thesis-preview.jpg",
+    image: "assets/images/thesis-dashboard.png",
     details: [
       "Objective: Determine the most accurate CNN architecture for automated multi-class lung histopathology diagnosis.",
       "Classes: Adenocarcinoma, Benign tissue, Squamous cell carcinoma.",
@@ -143,7 +142,7 @@ const projectData = {
     title: "Learning Buddy — AI Capstone Platform",
     badge: "Capstone Project • Oct–Dec 2025",
     summary: "AI-powered web chatbot platform built by a 5-member team that delivers personalized learning paths, interactive study assistance, and adaptive skill assessments.",
-    image: "assets/images/learning-buddy.jpg",
+    image: "assets/images/learning-buddy-mockup.png",
     details: [
       "Role: Machine Learning Lead & Integration Specialist.",
       "Implemented NLP models using Word2Vec and fine-tuned LLMs for contextual question answering.",
@@ -156,7 +155,7 @@ const projectData = {
     title: "Intermediate Accounting Lab System & Web Identity",
     badge: "Gunadarma University • Jul 2025",
     summary: "Comprehensive IT support, accounting software management, and visual/web asset design for Gunadarma University's Intermediate Accounting Laboratory.",
-    image: "assets/images/lab-project.jpg",
+    image: "assets/images/lab-accounting-dashboard-16x9.png",
     details: [
       "Administered laboratory network infrastructure and specialized accounting suites (Zahir Accounting & Zahir ERP).",
       "Designed visual identity materials, official assistant ID cards, event posters, and laboratory portal layout.",
@@ -173,6 +172,7 @@ function initProjectModals() {
   const modalBadge = document.getElementById('modal-badge');
   const modalSummary = document.getElementById('modal-summary');
   const modalImage = document.getElementById('modal-image');
+  const modalImageWrapper = document.getElementById('modal-image-wrapper');
   const modalDetails = document.getElementById('modal-details-list');
   const modalTech = document.getElementById('modal-tech-pills');
 
@@ -186,6 +186,12 @@ function initProjectModals() {
     modalBadge.textContent = data.badge;
     modalSummary.textContent = data.summary;
     modalImage.src = data.image;
+    modalImage.classList.toggle('object-contain', key === 'labAssistant');
+    modalImage.classList.toggle('object-cover', key !== 'labAssistant');
+    if (modalImageWrapper) {
+      modalImageWrapper.classList.toggle('learning-buddy-modal-image', key === 'learningBuddy');
+      modalImageWrapper.classList.toggle('lab-assistant-modal-image', key === 'labAssistant');
+    }
 
     // Render detail points
     modalDetails.innerHTML = data.details.map(item => `<li class="flex items-start gap-2"><span class="text-[#E98973] font-bold">•</span> <span>${item}</span></li>`).join('');
@@ -209,41 +215,3 @@ function initProjectModals() {
     if (e.target === modal) closeModal();
   });
 }
-
-/* ==========================================================================
-   6. Contact Form Submission Handler
-   ========================================================================== */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const toast = document.getElementById('toast-notification');
-
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>Sending...</span>`;
-
-    setTimeout(() => {
-      form.reset();
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
-
-      // Show toast notification
-      if (toast) {
-        toast.classList.remove('translate-y-20', 'opacity-0');
-        toast.classList.add('translate-y-0', 'opacity-100');
-
-        setTimeout(() => {
-          toast.classList.add('translate-y-20', 'opacity-0');
-          toast.classList.remove('translate-y-0', 'opacity-100');
-        }, 4000);
-      }
-    }, 1000);
-  });
-}
-
